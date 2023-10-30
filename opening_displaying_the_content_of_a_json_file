@@ -1,0 +1,21 @@
+import os
+import json
+from typing import Tuple
+import numpy as np
+import matplotlib.pyplot as plt
+import control
+import warnings
+warnings.filterwarnings('ignore')
+
+def read_parameters(params: str) -> dict:
+    try:
+        with open(params, 'r') as f_in:
+            return json.load(f_in)
+    except FileNotFoundError:
+        print(f"The file at {params} was not found.")
+        return {}
+
+if __name__ == "__main__":
+    file_path = 'code_modules\python\Ex1\params.json'
+    my_data = read_parameters(file_path)
+    print(my_data)
